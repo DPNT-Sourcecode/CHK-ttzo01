@@ -29,66 +29,17 @@
 # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # +------+-------+---------------------------------+
 from solutions.CHK.single_item_deals import SINGLE_ITEM_DEALS
+from solutions.CHK.price_list import PRICE_LIST
+from solutions.CHK.multi_item_deals import MULTI_ITEM_DEALS
+
+from solutions.CHK.data_keys import (
+  DEAL_COUNT_KEY,
+  PRICE_REDUCTION_KEY,
+  MULTI_ITEM_DEAL_KEY
+)
 
 from typing import Dict, List
 from math import floor
-
-PRICE_LIST = {
-  "A": 50,
-  "B": 30,
-  "C": 20,
-  "D": 15,
-  "E": 40,
-  "F": 10,
-  "G": 20,
-  "H": 10,
-  "I": 35,
-  "J": 60,
-  "K": 70,
-  "L": 90,
-  "M": 15,
-  "N": 40,
-  "O": 10,
-  "P": 50,
-  "Q": 30,
-  "R": 50,
-  "S": 20,
-  "T": 20,
-  "U": 40,
-  "V": 50,
-  "W": 20,
-  "X": 17,
-  "Y": 20,
-  "Z": 21,
-}
-
-# | E    | 40    | 2E get one B free      |
-# | N    | 40    | 3N get one M free      |
-# | R    | 50    | 3R get one Q free      |
-
-MULTI_ITEM_DEALS = {
-  "E": {
-      1: {
-      DEAL_COUNT_KEY: 2,
-      MULTI_ITEM_DEAL_KEY: "B",
-      PRICE_REDUCTION_KEY: 30
-    }
-  },
-  "N": {
-      1: {
-      DEAL_COUNT_KEY: 3,
-      MULTI_ITEM_DEAL_KEY: "M",
-      PRICE_REDUCTION_KEY: 15
-    }
-  },
-  "R": {
-      1: {
-      DEAL_COUNT_KEY: 3,
-      MULTI_ITEM_DEAL_KEY: "Q",
-      PRICE_REDUCTION_KEY: 30
-    }
-  },
-}
 
 INVALID_INPUT_RESPONSE = -1
 
@@ -163,5 +114,6 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
