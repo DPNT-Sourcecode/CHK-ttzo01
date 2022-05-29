@@ -100,6 +100,7 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
           if (number_of_times_deal_applied > 0):
             total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
             total_for_single_item = total_for_single_item % number_of_times_deal_applied
+            count_dict[deal_item] -= number_of_times_deal_applied
 
 
   print("total_price_reduction", total_price_reduction)
@@ -127,7 +128,8 @@ def checkout(skus: str) -> int:
   # calculate reduction in price from total
 
   # I've just noticed the deals conflict with each other
-  total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
+  # Calculate the multi item deals first and reduce the count_dict on the deal item if they've been applied
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
+  total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
