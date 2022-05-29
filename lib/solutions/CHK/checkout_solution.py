@@ -34,21 +34,29 @@ DEALS = {
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def checkout(skus: List[str]) -> int:
+def compute(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
-  for sku in skus:
 
-    if sku not in count:
-      count[sku] = 0
+  for sku in skus:
+    if sku not in count_dict:
+      count_dict[sku] = 0
     else:
-      count[sku] += 1
+      count_dict[sku] += 1
     
   unique_skus = set(skus)
 
   total_cost = 0
   for unique_sku in unique_skus:
     if unique_sku in DEALS:
+
       deal_data = DEALS[unique_sku]
-      if count_dict[unique_sku] >= deal_data[DEAL_COUNT_KEY]:
-        deal_count = floor(count_dict[unique_sku] / [DEAL_COUNT_KEY])
-        total_cost = deal_count * DEALS_
+
+      deal_count = floor(count_dict[unique_sku] / deal_data[DEAL_COUNT_KEY])
+      remainder_after_deal = count_dict[unique_sku] % deal_data[DEAL_COUNT_KEY]
+      total_cost += deal_count * deal_data[DEAL_PRICE_KEY]
+
+      total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
+    else:
+      total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
+
+  return total_cost
