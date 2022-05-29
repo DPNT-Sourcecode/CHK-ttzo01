@@ -6,5 +6,6 @@ def hello(friend_name: str) -> str:
   if not isinstance(friend_name, str):
     raise TypeError(f"Invalid input {friend_name}")
 
-  return "Hello, World!"  
+  return f"Hello, {friend_name}!"  
+
 
