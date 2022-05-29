@@ -46,18 +46,17 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
   
     number_of_times_deal_applied = floor(total_count_for_combo / deal[DEAL_COUNT_KEY])
 
-    print(number_of_times_deal_applied)
+    remainder_after_deal_applied = total_count_for_combo % deal[TOTAL_PRICE_KEY]
 
-    total_deal_price = number_of_times_deal_applied * deal[TOTAL_PRICE_KEY]
+    sorted_descending_prices_for_deal = dict(sorted(prices_for_deal.items(), key=lambda item: item[1], reverse=True))
 
-    remainder = total_count_for_combo % deal[TOTAL_PRICE_KEY]
-
-    sorted_ascending_prices_for_deal = dict(sorted(prices_for_deal.items(), key=lambda item: item[1]))
-
-
-    for sku_and_price in sorted_ascending_prices_for_deal:
+    for sku_index_to_remove in range(remainder_after_deal_applied):
+      
+    for sku_and_price in sorted_descending_prices_for_deal.items():
+      sku = sku_and_price[0]
       
 
   return total_price_reduction
+
 
 
