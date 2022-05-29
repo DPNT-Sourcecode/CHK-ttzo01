@@ -18,26 +18,19 @@ from solutions.CHK.data_keys import (
 #  total_count += count_dict[sku]
 #
 
-MULTI_ITEM_COMBO_DEALS = {
-  ["S","T","X","Y","Z"]: {
-    1: {
-      DEAL_COUNT_KEY: 3,
-      TOTAL_PRICE_KEY: 45
-    }
+MULTI_ITEM_COMBO_DEALS = [
+  {
+    DEAL_COMBO_LIST_KEY: ["S","T","X","Y","Z"],
+    DEAL_COUNT_KEY: 3,
+    TOTAL_PRICE_KEY: 45
   },
-}
+]
 
 def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique_skus: list) -> int:
   total_price_reduction = 0
 
   total_count_for_combo = 0
-  for unique_sku in unique_skus:
-    if unique_sku in MULTI_ITEM_COMBO_DEALS:
-      all_deal_data_for_item = MULTI_ITEM_COMBO_DEALS[unique_sku]
-
-      # Should really check this exists before accessing from the dict. Also should really exist at this stage though
-      total_for_single_item = count_dict[unique_sku]
-
-      total_count_for_combo += total_for_single_item
+  for deal in DEAL_COMBO_LIST_KEY:
+    for sku_in_combo_deal in deal[DEAL_COMBO_LIST_KEY]
 
   return total_price_reduction
