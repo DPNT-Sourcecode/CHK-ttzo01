@@ -23,16 +23,18 @@ PRICE_LIST = {
   "E": 40,
 }
 
+
+# Sorted list of deals per item, Descending based on deal count.
 SINGLE_ITEM_DEALS = {
   "A": {
     1: {
+      DEAL_COUNT_KEY: 5,
+      PRICE_REDUCTION_KEY: 50
+    },
+    2: {
       DEAL_COUNT_KEY: 3,
       PRICE_REDUCTION_KEY: 20
     },
-    2:{
-      DEAL_COUNT_KEY: 5,
-      PRICE_REDUCTION_KEY: 50
-    }
   },
   "B": {
     1: {
@@ -56,18 +58,15 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
   total_price_reduction = 0
   for unique_sku in unique_skus:
     if unique_sku in SINGLE_ITEM_DEALS:
-      all_deal_data = SINGLE_ITEM_DEALS[unique_sku]
-
-      # Need a list of the deal counts starting from largest first
-      descending_deal_required_amount_list = sorted([single_deal_data[DEAL_COUNT_KEY] for single_deal_data in all_deal_data.values()], reverse=True)
+      all_deal_data_for_item = SINGLE_ITEM_DEALS[unique_sku]
 
       # Should really check this exists before accessing from the dict. Also should really exist at this stage though
       total_for_single_item = count_dict[unique_sku]
 
       deal_applied_dict = {}
 
-      for required_deal_amount in descending_deal_required_amount_list:
-        number_of_times_deal_applied = floor(total_for_single_item / required_deal_amount)
+      for single_deal_for_item in all_deal_data_for_item.values():
+        number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
 
         deal_applied_dict[required_deal_amount] = number_of_times_deal_applied
 
@@ -75,7 +74,7 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
       
       print(deal_applied_dict)
 
-      for deal in deal_applied_dict
+      for deal in deal_applied_dict:
 
 
   return total_price_reduction
@@ -120,11 +119,3 @@ def checkout(skus: str) -> int:
   # return total_cost
 
   return total_cost
-
-
-
-
-
-
-
-
