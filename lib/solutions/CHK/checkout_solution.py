@@ -39,16 +39,18 @@ SINGLE_ITEM_DEALS = {
   "B": {
     1: {
       DEAL_COUNT_KEY: 2,
-      PRICE_REDUCTION_KEY: 45
+      PRICE_REDUCTION_KEY: 15
     }
   }
 }
 
 MULTI_ITEM_DEALS = {
   "E": {
-    DEAL_COUNT_KEY: 2,
-    "deal_item": "B",
-    PRICE_REDUCTION_KEY: 30
+      1: {
+      DEAL_COUNT_KEY: 2,
+      "deal_item": "B",
+      PRICE_REDUCTION_KEY: 30
+    }
   }
 }
 
@@ -67,14 +69,30 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
 
       for single_deal_for_item in all_deal_data_for_item.values():
         number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
-        print(single_deal_for_item[DEAL_COUNT_KEY])
-        print(number_of_times_deal_applied)
         if (number_of_times_deal_applied > 0):
           total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
           total_for_single_item = total_for_single_item % number_of_times_deal_applied
       
-      # print(total_price_reduction)
+  return total_price_reduction
 
+
+def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique_skus: list) -> int:
+  total_price_reduction = 0
+  for unique_sku in unique_skus:
+    if unique_sku in MULTI_ITEM_DEALS:
+      all_deal_data_for_item = MULTI_ITEM_DEALS[unique_sku]
+
+      # Should really check this exists before accessing from the dict. Also should really exist at this stage though
+      total_for_single_item = count_dict[unique_sku]
+
+      deal_applied_dict = {}
+
+      for single_deal_for_item in all_deal_data_for_item.values():
+        number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
+        if (number_of_times_deal_applied > 0):
+          total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
+          total_for_single_item = total_for_single_item % number_of_times_deal_applied
+      
   return total_price_reduction
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
@@ -93,16 +111,18 @@ def checkout(skus: str) -> int:
   total_cost = 0
 
   for unique_sku in unique_skus:
-    total_cost += PRICE_LIST[unique_sku]
+    total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
-  print(total_cost)
+  print("Total cost before reduction", total_cost)
 
   # calculate reduction in price from total
 
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   print(total_cost)
+  print("Total cost after reduction", total_cost)
 
   # total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
