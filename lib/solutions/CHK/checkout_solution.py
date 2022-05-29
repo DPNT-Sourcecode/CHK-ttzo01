@@ -75,8 +75,9 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
           total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
           total_for_single_item = total_for_single_item % number_of_times_deal_applied
 
+          print("total_price_reduction", total_price_reduction)
           print("total_for_single_item", total_for_single_item)
-      
+
   return total_price_reduction
 
 
