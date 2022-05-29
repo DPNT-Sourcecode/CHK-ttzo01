@@ -13,12 +13,16 @@ from solutions.CHK.data_keys import (
 # | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 
+# total_count_for_combo deal
+# for each unique sku
+#  total_count += count_dict[sku]
+#
+
 MULTI_ITEM_COMBO_DEALS = {
-  "E": {
+  ["S","T","X","Y","Z"]: {
       1: {
       DEAL_COUNT_KEY: 3,
-      MULTI_ITEM_DEAL_KEY: "B",
-      PRICE_REDUCTION_KEY: 30
+      TOTAL_PRICE_KEY: 45
     }
   },
 }
