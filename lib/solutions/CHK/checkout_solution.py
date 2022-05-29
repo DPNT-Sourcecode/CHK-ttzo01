@@ -28,13 +28,10 @@
 # | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # +------+-------+---------------------------------+
+from solutions.CHK.single_item_deals import SINGLE_ITEM_DEALS
+
 from typing import Dict, List
 from math import floor
-
-DEAL_COUNT_KEY = "count"
-PRICE_REDUCTION_KEY = "price_reduction"
-MULTI_ITEM_DEAL_KEY = "deal_item"
-
 
 PRICE_LIST = {
   "A": 50,
@@ -166,4 +163,5 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
