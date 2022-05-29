@@ -44,10 +44,10 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
         total_count_for_combo += count_dict[sku_in_combo_deal]
         cost_without_deal += count_dict[sku_in_combo_deal] * PRICE_LIST[sku_in_combo_deal]
   
-    remainder_after_deal_applied = total_count_for_combo % deal[TOTAL_PRICE_KEY]
+    remainder_after_deal_applied = total_count_for_combo % deal[DEAL_COUNT_KEY]
+    deal_applied_count = floor(total_count_for_combo / deal[DEAL_COUNT_KEY])
 
     sorted_ascending_prices_for_deal = dict(sorted(prices_for_deal.items(), key=lambda item: item[1]))
-
 
     total_of_smallest_values_after_deal = 0
     for sku_and_price in sorted_ascending_prices_for_deal.items():
@@ -56,13 +56,21 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
       if sku in count_dict:
         price = sku_and_price[1]
         count_for_sku = count_dict[sku]
+
         if count_for_sku >= deal[DEAL_COUNT_KEY]:
           count_for_sku = count_for_sku % deal[DEAL_COUNT_KEY]
 
-        if remainder_after_deal_applied < count:
+        if remainder_after_deal_applied <= count:
           total_of_smallest_values_after_deal += remainder_after_deal_applied * price
           break
-      
+
+        if remainder_after_deal_applied > count:
+          total_of_smallest_values_after_deal += count * price
+          remainder_after_deal_applied -= count
+    
+    total_price_reduction = cost_without_deal - total_of_smallest_values_after_deal - deal_applied_count * deal[TOTAL_PRICE_KEY]
+    
 
   return total_price_reduction
+
 
