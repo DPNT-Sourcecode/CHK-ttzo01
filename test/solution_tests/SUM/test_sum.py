@@ -11,3 +11,9 @@ class TestSum():
       sum_solution.compute(-1, 2)
     with raises(ValueError):
       sum_solution.compute(0, 101)
+
+  def test_sum_input_type(self):
+    with raises(TypeError):
+      sum_solution.compute("str", 2)
+    with raises(TypeError):
+      sum_solution.compute(1, "str")
