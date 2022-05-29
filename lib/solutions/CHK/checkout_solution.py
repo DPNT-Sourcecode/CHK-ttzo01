@@ -37,6 +37,9 @@ def compute(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
 
   for sku in skus:
+    if sku not in PRICE_LIST:
+      raise ValueError("Invalid input")
+
     if sku not in count_dict:
       count_dict[sku] = 1
     else:
@@ -62,3 +65,4 @@ def compute(skus: List[str]) -> int:
 
 def checkout(skus: List[str]) -> int:
   return compute(skus)
+
