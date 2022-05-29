@@ -171,7 +171,6 @@ MULTI_ITEM_DEALS = {
       PRICE_REDUCTION_KEY: 30
     }
   },
-
 }
 
 INVALID_INPUT_RESPONSE = -1
@@ -247,6 +246,7 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
 
