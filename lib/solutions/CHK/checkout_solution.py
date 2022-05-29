@@ -65,8 +65,7 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
       # Should really check this exists before accessing from the dict. Also should really exist at this stage though
       total_for_single_item = count_dict[unique_sku]
 
-      deal_applied_dict = {}
-
+      # Use the total for a single item, Reduce the count when the largest deal count deal has been applied
       for single_deal_for_item in all_deal_data_for_item.values():
         number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
         if (number_of_times_deal_applied > 0):
@@ -84,8 +83,6 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
       # Should really check this exists before accessing from the dict. Also should really exist at this stage though
       total_for_single_item = count_dict[unique_sku]
-
-      deal_applied_dict = {}
 
       for single_deal_for_item in all_deal_data_for_item.values():
         number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
@@ -121,4 +118,5 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
