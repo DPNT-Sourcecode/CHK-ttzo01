@@ -75,6 +75,3 @@ def checkout(skus: str) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
-
-
-
