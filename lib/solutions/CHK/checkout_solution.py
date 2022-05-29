@@ -1,12 +1,13 @@
+# +------+-------+------------------------+
+# | Item | Price | Special offers         |
+# +------+-------+------------------------+
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | C    | 20    |                        |
+# | D    | 15    |                        |
+# | E    | 40    | 2E get one B free      |
+# +------+-------+------------------------+
 
-# +------+-------+----------------+
-# | Item | Price | Special offers |
-# +------+-------+----------------+
-# | A    | 50    | 3A for 130     |
-# | B    | 30    | 2B for 45      |
-# | C    | 20    |                |
-# | D    | 15    |                |
-# +------+-------+----------------+
 
 from typing import Dict, List
 from math import floor
@@ -15,21 +16,24 @@ DEAL_COUNT_KEY = "count"
 DEAL_PRICE_KEY = "price"
 
 PRICE_LIST = {
-  "A": 50,  
-  "B": 30,  
-  "C": 20,  
-  "D": 15,  
+  "A": 50,
+  "B": 30,
+  "C": 20,
+  "D": 15,
 }
 
-DEALS = {
-  "A": {
+SINGLE_ITEM_DEALS = {
+  "A": [{
     DEAL_COUNT_KEY: 3,
     DEAL_PRICE_KEY: 130
-  },
-  "B": {
+  }, {
+    DEAL_COUNT_KEY: 5,
+    DEAL_PRICE_KEY: 200
+  }],
+  "B": [{
     DEAL_COUNT_KEY: 2,
     DEAL_PRICE_KEY: 45
-  }
+  }]
 }
 
 INVALID_INPUT_RESPONSE = -1
@@ -65,4 +69,5 @@ def checkout(skus: str) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
 

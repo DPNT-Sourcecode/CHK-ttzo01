@@ -2,14 +2,16 @@ from solutions.CHK import checkout_solution
 
 from pytest import raises
 
-# +------+-------+----------------+
-# | Item | Price | Special offers |
-# +------+-------+----------------+
-# | A    | 50    | 3A for 130     |
-# | B    | 30    | 2B for 45      |
-# | C    | 20    |                |
-# | D    | 15    |                |
-# +------+-------+----------------+
+# +------+-------+------------------------+
+# | Item | Price | Special offers         |
+# +------+-------+------------------------+
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | C    | 20    |                        |
+# | D    | 15    |                        |
+# | E    | 40    | 2E get one B free      |
+# +------+-------+------------------------+
+
 
 class TestSum():
 
@@ -54,6 +56,11 @@ class TestSum():
 
     sku_input = "01"
     assert checkout_solution.checkout(sku_input) == -1
+
+  def test_checkout_free_item_conditons(self):
+    sku_input = "EEBEE"
+    assert checkout_solution.checkout(sku_input) == (4 * )
+
 
 
 
