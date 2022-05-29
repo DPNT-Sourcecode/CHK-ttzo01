@@ -4,7 +4,9 @@ from math import floor
 from solutions.CHK.data_keys import (
   DEAL_COUNT_KEY,
   PRICE_REDUCTION_KEY,
-  MULTI_ITEM_DEAL_KEY
+  MULTI_ITEM_DEAL_KEY,
+  DEAL_COMBO_LIST_KEY,
+  TOTAL_PRICE_KEY
 )
 from solutions.CHK.price_list import PRICE_LIST
 
@@ -14,11 +16,6 @@ from solutions.CHK.price_list import PRICE_LIST
 # | X    | 17    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
-
-# total_count_for_combo deal
-# for each unique sku
-#  total_count += count_dict[sku]
-#
 
 MULTI_ITEM_COMBO_DEALS = [
   {
@@ -33,7 +30,7 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
 
   # need to get the list of items in price order and count the most expensive ones first
 
-  for deal in DEAL_COMBO_LIST_KEY:
+  for deal in MULTI_ITEM_COMBO_DEALS:
 
     prices_for_deal = {}
     total_count_for_combo = 0
@@ -57,3 +54,4 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
       print(sku_and_price)
 
   return total_price_reduction
+
