@@ -46,6 +46,12 @@ MULTI_ITEM_DEALS = {
 
 INVALID_INPUT_RESPONSE = -1
 
+def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], unique_skus: list) -> int:
+  total_price_reduction = 0
+  for unique_sku in unique_skus:
+    if unique_sku in SINGLE_ITEM_DEALS:
+
+
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def checkout(skus: str) -> int:
 
@@ -68,18 +74,23 @@ def checkout(skus: str) -> int:
 
   # calculate reduction in price from total
 
-  for unique_sku in unique_skus:
-    if unique_sku in SINGLE_ITEM_DEALS:
 
-      single_item_deal_data = SINGLE_ITEM_DEALS[unique_sku]
+      total_cost -= 
 
-      deal_count = floor(count_dict[unique_sku] / single_item_deal_data[DEAL_COUNT_KEY])
-      remainder_after_deal = count_dict[unique_sku] % single_item_deal_data[DEAL_COUNT_KEY]
+  # for unique_sku in unique_skus:
+  #   if unique_sku in SINGLE_ITEM_DEALS:
 
-      total_cost += deal_count * single_item_deal_data[PRICE_REDUCTION_KEY]
-      total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
-    else:
-      total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
+  #     single_item_deal_data = SINGLE_ITEM_DEALS[unique_sku]
+
+  #     deal_count = floor(count_dict[unique_sku] / single_item_deal_data[DEAL_COUNT_KEY])
+  #     remainder_after_deal = count_dict[unique_sku] % single_item_deal_data[DEAL_COUNT_KEY]
+
+  #     total_cost += deal_count * single_item_deal_data[PRICE_REDUCTION_KEY]
+  #     total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
+  #   else:
+  #     total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
+
+  # return total_cost
 
   return total_cost
 
