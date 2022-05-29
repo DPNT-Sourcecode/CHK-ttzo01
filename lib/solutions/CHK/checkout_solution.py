@@ -3,6 +3,7 @@ from typing import Dict
 from solutions.CHK.single_item_deals import calculate_single_item_deal_price_reduction
 from solutions.CHK.price_list import PRICE_LIST
 from solutions.CHK.multi_item_deals import calculate_multi_item_deal_price_reduction
+from solutions.CHK.multi_item_combo_deals import calculate_multi_item_combo_deal_price_reduction
 
 
 INVALID_INPUT_RESPONSE = -1
@@ -28,6 +29,8 @@ def checkout(skus: str) -> int:
 
   # Calculate the multi item deals first and reduce the count_dict on the deal item if they've been applied
   # This doesn't really work if the multi_item deal price is less than the single item deal
+  
+  total_cost -= calculate_multi_item_combo_deal_price_reduction(count_dict, unique_skus)
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
