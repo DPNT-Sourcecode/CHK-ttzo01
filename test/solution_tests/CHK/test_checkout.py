@@ -96,29 +96,29 @@ class TestSum():
     sku_input = "R"
     assert checkout_solution.checkout(sku_input) == 50
 
-assert checkout_solution.checkout(sku_input) == 30
-assert checkout_solution.checkout(sku_input) == 50
-assert checkout_solution.checkout(sku_input) == 30
-assert checkout_solution.checkout(sku_input) == 20
-assert checkout_solution.checkout(sku_input) == 40
-assert checkout_solution.checkout(sku_input) == 50
-assert checkout_solution.checkout(sku_input) == 20
-assert checkout_solution.checkout(sku_input) == 90
-assert checkout_solution.checkout(sku_input) == 10
-assert checkout_solution.checkout(sku_input) == 50
+    sku_input = "S"
+    assert checkout_solution.checkout(sku_input) == 30
 
+    sku_input = "T"
+    assert checkout_solution.checkout(sku_input) == 20
 
-# | Q    | 30    | 3Q for 80              |
-# | R    | 50    | 3R get one Q free      |
-# | S    | 30    |                        |
-# | T    | 20    |                        |
-# | U    | 40    | 3U get one U free      |
-# | V    | 50    | 2V for 90, 3V for 130  |
-# | W    | 20    |                        |
-# | X    | 90    |                        |
-# | Y    | 10    |                        |
-# | Z    | 50    |                        |
-# +------+-------+------------------------+
+    sku_input = "U"
+    assert checkout_solution.checkout(sku_input) == 40
+
+    sku_input = "V"
+    assert checkout_solution.checkout(sku_input) == 50
+
+    sku_input = "W"
+    assert checkout_solution.checkout(sku_input) == 20
+
+    sku_input = "X"
+    assert checkout_solution.checkout(sku_input) == 90
+
+    sku_input = "Y"
+    assert checkout_solution.checkout(sku_input) == 10
+
+    sku_input = "Z"
+    assert checkout_solution.checkout(sku_input) == 50
 
 
   def test_checkout_no_deals(self):
@@ -186,3 +186,4 @@ assert checkout_solution.checkout(sku_input) == 50
 
     sku_input = "FFFFFF"
     assert checkout_solution.checkout(sku_input) == (4 * 10)
+
