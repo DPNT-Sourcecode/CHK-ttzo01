@@ -22,6 +22,7 @@ PRICE_LIST = {
   "C": 20,
   "D": 15,
   "E": 40,
+  "F": 15,
 }
 
 
@@ -51,6 +52,13 @@ MULTI_ITEM_DEALS = {
       DEAL_COUNT_KEY: 2,
       MULTI_ITEM_DEAL_KEY: "B",
       PRICE_REDUCTION_KEY: 30
+    }
+  },
+  "F": {
+      1: {
+      DEAL_COUNT_KEY: 2,
+      MULTI_ITEM_DEAL_KEY: "F",
+      PRICE_REDUCTION_KEY: 15
     }
   }
 }
@@ -107,7 +115,6 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
       
   return total_price_reduction
 
-# I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def checkout(skus: str) -> int:
 
   if not isinstance(skus, str):
@@ -127,9 +134,9 @@ def checkout(skus: str) -> int:
 
   # calculate reduction in price from total
 
-  # I've just noticed the deals conflict with each other
   # Calculate the multi item deals first and reduce the count_dict on the deal item if they've been applied
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+

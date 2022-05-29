@@ -10,6 +10,7 @@ from pytest import raises
 # | C    | 20    |                        |
 # | D    | 15    |                        |
 # | E    | 40    | 2E get one B free      |
+# | F    | 10    | 2F get one F free      |
 # +------+-------+------------------------+
 
 
@@ -34,6 +35,9 @@ class TestSum():
 
     sku_input = "E"
     assert checkout_solution.checkout(sku_input) == 40
+
+    sku_input = "F"
+    assert checkout_solution.checkout(sku_input) == 10
 
   def test_checkout_no_deals(self):
     sku_input = "ABCD"
@@ -87,5 +91,10 @@ class TestSum():
 
     sku_input = "ABCDEABCDE"
     assert checkout_solution.checkout(sku_input) == (2 * 50 + 30 + 2 * 20 + 2 * 15 + 2 * 40)
+
+  def test_multiple_multi_item_deals(self):
+    sku_input = "EEEEBFF"
+    assert checkout_solution.checkout(sku_input) == (40 * 4 + 15)
+
 
 
