@@ -85,7 +85,7 @@ class TestSum():
     sku_input = "BEBEEE"
     assert checkout_solution.checkout(sku_input) == (40 * 4)
 
-  def test_checkout(self):
     sku_input = "ABCDEABCDE"
-    assert checkout_solution.checkout(sku_input) == 280
+    assert checkout_solution.checkout(sku_input) == (2 * 50 + 30 + 2 * 20 + 2 * 15 + 2 * 40)
+
 
