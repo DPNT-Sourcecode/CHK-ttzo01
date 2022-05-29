@@ -17,4 +17,3 @@ def compute(x: int, y: int):
   else:
     raise ValueError(f"Sum inputs not in range {SUM_RANGE}, x {x}, y {y}")
 
-

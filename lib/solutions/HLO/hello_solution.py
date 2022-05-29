@@ -8,4 +8,3 @@ def hello(friend_name: str) -> str:
 
   print("Hello world")
   return "Hello World"  
-
