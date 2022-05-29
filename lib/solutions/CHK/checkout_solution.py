@@ -9,6 +9,7 @@
 # +------+-------+----------------+
 
 from typing import Dict, List
+from math import floor
 
 DEAL_COUNT_KEY = "count"
 DEAL_PRICE_KEY = "price"
@@ -47,5 +48,7 @@ def checkout(skus: List[str]) -> int:
   total_cost = 0
   for unique_sku in unique_skus:
     if unique_sku in DEALS:
-      if count_dict[unique_sku] >= DEALS[unique_sku]:
-        total_cost = count_dict[unique_sku] % DEALS[unique_sku]
+      deal_data = DEALS[unique_sku]
+      if count_dict[unique_sku] >= deal_data[DEAL_COUNT_KEY]:
+        deal_count = floor(count_dict[unique_sku] / [DEAL_COUNT_KEY])
+        total_cost = deal_count * DEALS_
