@@ -32,14 +32,18 @@ DEALS = {
   }
 }
 
+INVALID_INPUT_RESPONSE = -1
+
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def checkout(skus: List[str]) -> int:
+
+  if not isinstance(skus, list):
+    return INVALID_INPUT_RESPONSE
 
   unique_skus = set(skus)
 
   if not all(sku in PRICE_LIST for sku in unique_skus):
-    print("Invalid input")
-    return 0
+    return INVALID_INPUT_RESPONSE
 
   count_dict: Dict[str, int] = {sku: skus.count(sku) for sku in unique_skus}
 
@@ -59,9 +63,3 @@ def checkout(skus: List[str]) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
-
-
-
-
-
-

@@ -13,24 +13,26 @@ from pytest import raises
 
 class TestSum():
   def test_checkout_no_deals(self):
-    input = ["A", "B", "C", "D"]
-    assert checkout_solution.checkout(input) == (50 + 30 + 20 + 15)
+    sku_input = ["A", "B", "C", "D"]
+    assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 15)
     
-    input = ["A", "B", "C", "C"]    
-    assert checkout_solution.checkout(input) == (50 + 30 + 20 + 20)
+    sku_input = ["A", "B", "C", "C"]    
+    assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 20)
 
-    input = ["A", "A", "C", "C"]    
-    assert checkout_solution.checkout(input) == (50 + 50 + 20 + 20)
+    sku_input = ["A", "A", "C", "C"]    
+    assert checkout_solution.checkout(sku_input) == (50 + 50 + 20 + 20)
 
   def test_checkout_deals_with_A(self):
-    input = ["A", "A", "A", "B"]
-    assert checkout_solution.checkout(input) == (130 + 30)
+    sku_input = ["A", "A", "A", "B"]
+    assert checkout_solution.checkout(sku_input) == (130 + 30)
 
   def test_checkout_deals_with_B(self):
-    input = ["A", "A", "B", "B"]
-    assert checkout_solution.checkout(input) == (50 + 50 + 45)
+    sku_input = ["A", "A", "B", "B"]
+    assert checkout_solution.checkout(sku_input) == (50 + 50 + 45)
     
-  # def test_checkout_invalid_input(self):
-  #   input = ["a"]
-  #   with raises(ValueError):
-  #     checkout_solution.checkout(input)
+  def test_checkout_invalid_input(self):
+    sku_input = ["a"]
+    assert checkout_solution.checkout(sku_input) == -1
+
+    sku_input = ["01"]
+    assert checkout_solution.checkout(sku_input) == -1
