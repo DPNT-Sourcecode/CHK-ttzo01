@@ -36,16 +36,13 @@ DEALS = {
 def checkout(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
 
-  for sku in skus:
+  unique_skus = set(skus)
+
     if sku not in PRICE_LIST:
       raise ValueError("Invalid input")
 
-    if sku not in count_dict:
-      count_dict[sku] = 1
-    else:
-      count_dict[sku] += 1
-    
-  unique_skus = set(skus)
+  for unique_sku in unique_skus:
+    count_dict[unique_sku] = skus.count(unique_skus)
 
   total_cost = 0
   for unique_sku in unique_skus:
@@ -62,4 +59,5 @@ def checkout(skus: List[str]) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
 
