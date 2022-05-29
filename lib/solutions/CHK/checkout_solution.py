@@ -53,6 +53,8 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
     if unique_sku in SINGLE_ITEM_DEALS:
       deal_data = SINGLE_ITEM_DEALS[unique_sku]
 
+      descending_deal_count_list = sort([deal[DEAL_COUNT_KEY] for deal in deal_data], reverse=True)
+
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def checkout(skus: str) -> int:
@@ -96,5 +98,6 @@ def checkout(skus: str) -> int:
   # return total_cost
 
   return total_cost
+
 
 
