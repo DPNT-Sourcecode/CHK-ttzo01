@@ -39,6 +39,7 @@ def checkout(skus: List[str]) -> int:
 
   if not all(sku in PRICE_LIST for sku in unique_skus):
     print("Invalid input")
+    return 0
 
   count_dict: Dict[str, int] = {sku: skus.count(sku) for sku in unique_skus}
 
@@ -58,6 +59,7 @@ def checkout(skus: List[str]) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
 
 
 
