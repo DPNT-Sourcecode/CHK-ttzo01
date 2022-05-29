@@ -12,6 +12,20 @@ from pytest import raises
 # +------+-------+----------------+
 
 class TestSum():
+
+  def test_checkout_single_inputs(self):
+    sku_input = ["A"]
+    assert checkout_solution.checkout(sku_input) == 50
+  
+    sku_input = ["B"]
+    assert checkout_solution.checkout(sku_input) == 30
+
+    sku_input = ["C"]
+    assert checkout_solution.checkout(sku_input) == 20
+
+    sku_input = ["D"]
+    assert checkout_solution.checkout(sku_input) == 15
+
   def test_checkout_no_deals(self):
     sku_input = ["A", "B", "C", "D"]
     assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 15)
@@ -36,3 +50,4 @@ class TestSum():
 
     sku_input = ["01"]
     assert checkout_solution.checkout(sku_input) == -1
+
