@@ -13,6 +13,10 @@ from pytest import raises
 
 class TestSum():
 
+  def test_checkout_check_empty(self):
+    sku_input = ""
+    assert checkout_solution.checkout(sku_input) == 0
+
   def test_checkout_single_inputs(self):
     sku_input = "A"
     assert checkout_solution.checkout(sku_input) == 50
@@ -50,5 +54,6 @@ class TestSum():
 
     sku_input = "01"
     assert checkout_solution.checkout(sku_input) == -1
+
 
 
