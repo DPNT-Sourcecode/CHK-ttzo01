@@ -166,6 +166,24 @@ class TestSum():
     sku_input = "FFFFFF"
     assert checkout_solution.checkout(sku_input) == (4 * 10)
 
+    sku_input = "HHHHHHHHHHHHHHH"
+    assert checkout_solution.checkout(sku_input) == (45 + 80)
+
+    sku_input = "KKK"
+    assert checkout_solution.checkout(sku_input) == (150 + 80)
+
+    sku_input = "PPPPPPP"
+    assert checkout_solution.checkout(sku_input) == (200 + 50 * 2)
+
+    sku_input = "QQQQ"
+    assert checkout_solution.checkout(sku_input) == (80 + 30)
+
+    sku_input = "UUUUU"
+    assert checkout_solution.checkout(sku_input) == (4 * 40)
+
+    sku_input = "VVVVV"
+    assert checkout_solution.checkout(sku_input) == (90 + 130)
+
   def test_checkout_single_item_multiple_deals_multiple_times(self):
     sku_input = "AAAAAAAAAAAAAAABC"
     assert checkout_solution.checkout(sku_input) == (3 * 200 + 30 + 20)
@@ -195,5 +213,3 @@ class TestSum():
 
     sku_input = "RRRRQQ"
     assert checkout_solution.checkout(sku_input) == (4 * 50 + 30)
-
-
