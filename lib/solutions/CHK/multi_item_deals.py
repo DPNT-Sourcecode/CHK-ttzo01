@@ -6,9 +6,9 @@ from solutions.CHK.data_keys import (
   MULTI_ITEM_DEAL_KEY
 )
 
-# | E    | 40    | 2E get one B free      |
-# | N    | 40    | 3N get one M free      |
-# | R    | 50    | 3R get one Q free      |
+# | E    | 40    | 2E get one B free               |
+# | N    | 40    | 3N get one M free               |
+# | R    | 50    | 3R get one Q free               |
 
 MULTI_ITEM_DEALS = {
   "E": {
@@ -59,4 +59,5 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
 
   return total_price_reduction
+
 
