@@ -103,14 +103,11 @@ SINGLE_ITEM_DEALS = {
       PRICE_REDUCTION_KEY: 20
     }
   },
-# | P    | 50    | 5P for 200             |
-# | Q    | 30    | 3Q for 80              |
 # | U    | 40    | 3U get one U free      |
-# | V    | 50    | 2V for 90, 3V for 130  |
   "K": {
     1: {
-      DEAL_COUNT_KEY: 10,
-      PRICE_REDUCTION_KEY: 2
+      DEAL_COUNT_KEY: 2,
+      PRICE_REDUCTION_KEY: 10
     },
   },
   "P": {
@@ -230,6 +227,7 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
 
