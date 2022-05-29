@@ -199,5 +199,3 @@ class TestSum():
   def test_combo_deal_favour_more_expensive_items_in_deal(self):
     sku_input = "ZZZZSSSS"
     assert checkout_solution.checkout(sku_input) == (2 * 45 + 2 * 20)
-
-

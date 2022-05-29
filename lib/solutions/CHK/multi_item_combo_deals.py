@@ -56,13 +56,14 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
       if sku in count_dict:
         price = sku_and_price[1]
         count = count_dict[sku]
+        if count >= deal[DEAL_COUNT_KEY]:
+          count = count % deal[DEAL_COUNT_KEY]
+
+        total_of_smallest_values_after_deal += count * price
+        if remainder_after_deal_applied == count:
+
 
 
       
 
   return total_price_reduction
-
-
-
-
-
