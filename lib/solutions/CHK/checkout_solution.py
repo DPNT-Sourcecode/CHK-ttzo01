@@ -24,20 +24,22 @@ PRICE_LIST = {
 }
 
 SINGLE_ITEM_DEALS = {
-  "A": [{
-    DEAL_ID: 1,
-    DEAL_COUNT_KEY: 3,
-    PRICE_REDUCTION_KEY: 20
-  }, {
-    DEAL_ID: 2,
-    DEAL_COUNT_KEY: 5,
-    PRICE_REDUCTION_KEY: 50
-  }],
-  "B": [{
-    DEAL_ID: 3,
-    DEAL_COUNT_KEY: 2,
-    PRICE_REDUCTION_KEY: 45
-  }]
+  "A": {
+    1: {
+      DEAL_COUNT_KEY: 3,
+      PRICE_REDUCTION_KEY: 20
+    },
+    2:{
+      DEAL_COUNT_KEY: 5,
+      PRICE_REDUCTION_KEY: 50
+    }
+  },
+  "B": {
+    3: {
+      DEAL_COUNT_KEY: 2,
+      PRICE_REDUCTION_KEY: 45
+    }
+  }
 }
 
 MULTI_ITEM_DEALS = {
@@ -56,10 +58,10 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
     if unique_sku in SINGLE_ITEM_DEALS:
       deal_data = SINGLE_ITEM_DEALS[unique_sku]
 
-      descending_deal_required_amount_list = sort([deal[DEAL_COUNT_KEY] for deal in deal_data.], reverse=True)
+      descending_deal_required_amount_list = sort([deal_data[DEAL_COUNT_KEY] for deal_id in deal_data.values()], reverse=True)
 
       # Dictionary containing the deal amount required (Used this like an id) and the number of times that deal is applied
-      deal_applied_dict = {deal[DEAL_COUNT_KEY]: 0) for deal in deal_data}
+      deal_applied_dict = {deal[DEAL_ID]: 0) for deal in deal_data}
 
       deal_applied_dict = {deal[DEAL_COUNT_KEY]: floor(count_dict[unique_sku]/deal[DEAL_COUNT_KEY]) for deal in deal_data}
       for deal_required_amount in descending_deal_required_amount_list:
@@ -107,6 +109,7 @@ def checkout(skus: str) -> int:
   # return total_cost
 
   return total_cost
+
 
 
 
