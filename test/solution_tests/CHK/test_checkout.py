@@ -187,6 +187,3 @@ class TestSum():
 
     sku_input = "RRRRQQ"
     assert checkout_solution.checkout(sku_input) == (4 * 50 + 30)
-
-
-

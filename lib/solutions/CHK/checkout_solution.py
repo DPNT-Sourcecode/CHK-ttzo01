@@ -32,8 +32,3 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
-
-
-
-
-

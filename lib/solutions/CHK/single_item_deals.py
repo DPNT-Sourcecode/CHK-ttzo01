@@ -104,7 +104,3 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
           total_for_single_item = total_for_single_item % single_deal_for_item[DEAL_COUNT_KEY]
 
   return total_price_reduction
-
-
-
-

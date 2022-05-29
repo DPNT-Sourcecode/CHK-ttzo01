@@ -60,6 +60,3 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
 
   return total_price_reduction
-
-
-
