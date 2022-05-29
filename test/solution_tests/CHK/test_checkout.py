@@ -94,10 +94,16 @@ class TestSum():
 
   def test_multiple_multi_item_deals(self):
     sku_input = "EEEEBFF"
-    assert checkout_solution.checkout(sku_input) == (40 * 4 + 10)
+    assert checkout_solution.checkout(sku_input) == (40 * 4 + 2 * 10)
 
     sku_input = "EEEEBBFF"
-    assert checkout_solution.checkout(sku_input) == (40 * 4 + 10)
+    assert checkout_solution.checkout(sku_input) == (40 * 4 + 2 * 10)
+
+    sku_input = "FFFF"
+    assert checkout_solution.checkout(sku_input) == (3 * 10)
+
+        sku_input = "FFFF"
+    assert checkout_solution.checkout(sku_input) == (3 * 10)
 
 
 

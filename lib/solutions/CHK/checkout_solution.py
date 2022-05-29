@@ -56,7 +56,7 @@ MULTI_ITEM_DEALS = {
   },
   "F": {
       1: {
-      DEAL_COUNT_KEY: 2,
+      DEAL_COUNT_KEY: 3,
       MULTI_ITEM_DEAL_KEY: "F",
       PRICE_REDUCTION_KEY: 10
     }
