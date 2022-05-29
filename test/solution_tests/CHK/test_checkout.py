@@ -102,8 +102,8 @@ class TestSum():
     sku_input = "FFFF"
     assert checkout_solution.checkout(sku_input) == (3 * 10)
 
-        sku_input = "FFFF"
-    assert checkout_solution.checkout(sku_input) == (3 * 10)
+    sku_input = "FFFFFF"
+    assert checkout_solution.checkout(sku_input) == (4 * 10)
 
 
 
