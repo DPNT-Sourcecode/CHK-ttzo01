@@ -14,6 +14,7 @@ from math import floor
 
 DEAL_COUNT_KEY = "count"
 PRICE_REDUCTION_KEY = "price_reduction"
+MULTI_ITEM_DEAL_KEY = "deal_item"
 
 PRICE_LIST = {
   "A": 50,
@@ -48,7 +49,7 @@ MULTI_ITEM_DEALS = {
   "E": {
       1: {
       DEAL_COUNT_KEY: 2,
-      "deal_item": "B",
+      MULTI_ITEM_DEAL_KEY: "B",
       PRICE_REDUCTION_KEY: 30
     }
   }
@@ -86,6 +87,9 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
       for single_deal_for_item in all_deal_data_for_item.values():
         number_of_times_deal_applied = floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY])
+        deal_item = MULTI_ITEM_DEAL_KEY[MULTI_ITEM_DEAL_KEY]
+        deal_item_count = count_dict[deal_item]
+        
         if (number_of_times_deal_applied > 0):
           total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
           total_for_single_item = total_for_single_item % number_of_times_deal_applied
@@ -118,5 +122,6 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
