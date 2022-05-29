@@ -65,85 +65,6 @@ PRICE_LIST = {
   "Z": 21,
 }
 
-# | A    | 50    | 3A for 130, 5A for 200 |
-# | B    | 30    | 2B for 45              |
-# | H    | 10    | 5H for 45, 10H for 80  |
-# | K    | 80    | 2K for 150             |
-# | P    | 50    | 5P for 200             |
-# | Q    | 30    | 3Q for 80              |
-# | U    | 40    | 3U get one U free      |
-# | V    | 50    | 2V for 90, 3V for 130  |
-
-# Sorted dict of deals per item, Descending based on deal count. Doesn't need to be a dict could of just been a list
-SINGLE_ITEM_DEALS = {
-  "A": {
-    1: {
-      DEAL_COUNT_KEY: 5,
-      PRICE_REDUCTION_KEY: 50
-    },
-    2: {
-      DEAL_COUNT_KEY: 3,
-      PRICE_REDUCTION_KEY: 20
-    },
-  },
-  "B": {
-    1: {
-      DEAL_COUNT_KEY: 2,
-      PRICE_REDUCTION_KEY: 15
-    }
-  },
-  "F": {
-      1: {
-      DEAL_COUNT_KEY: 3,
-      PRICE_REDUCTION_KEY: 10
-    }
-  },
-  "H": {
-    2: {
-      DEAL_COUNT_KEY: 10,
-      PRICE_REDUCTION_KEY: 20
-    },
-    1: {
-      DEAL_COUNT_KEY: 5,
-      PRICE_REDUCTION_KEY: 5
-    }
-  },
-  "K": {
-    1: {
-      DEAL_COUNT_KEY: 2,
-      PRICE_REDUCTION_KEY: 10
-    },
-  },
-  "P": {
-    1: {
-      DEAL_COUNT_KEY: 5,
-      PRICE_REDUCTION_KEY: 50
-    },
-  },
-  "Q": {
-    1: {
-      DEAL_COUNT_KEY: 3,
-      PRICE_REDUCTION_KEY: 10
-    },
-  },
-  "U": {
-    1: {
-      DEAL_COUNT_KEY: 4,
-      PRICE_REDUCTION_KEY: 40
-    },
-  },
-  "V": {
-    2: {
-      DEAL_COUNT_KEY: 3,
-      PRICE_REDUCTION_KEY: 20
-    },
-    1: {
-      DEAL_COUNT_KEY: 2,
-      PRICE_REDUCTION_KEY: 10
-    }
-  }
-}
-
 # | E    | 40    | 2E get one B free      |
 # | N    | 40    | 3N get one M free      |
 # | R    | 50    | 3R get one Q free      |
@@ -245,3 +166,4 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+

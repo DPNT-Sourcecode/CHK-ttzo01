@@ -43,9 +43,9 @@ class TestSum():
 
   def test_checkout_single_inputs(self):
     sku_input = "A"
-    assert checkout_solution.checkout(sku_input) == 50 
+    assert checkout_solution.checkout(sku_input) == 50
     sku_input = "B"
-    assert checkout_solution.checkout(sku_input) == 30 
+    assert checkout_solution.checkout(sku_input) == 30
     sku_input = "C"
     assert checkout_solution.checkout(sku_input) == 20 
     sku_input = "D"
@@ -91,10 +91,9 @@ class TestSum():
     sku_input = "X"
     assert checkout_solution.checkout(sku_input) == 17 
     sku_input = "Y"
-    assert checkout_solution.checkout(sku_input) == 20 
+    assert checkout_solution.checkout(sku_input) == 20
     sku_input = "Z"
-    assert checkout_solution.checkout(sku_input) == 21 
-
+    assert checkout_solution.checkout(sku_input) == 21
 
   def test_checkout_no_deals(self):
     sku_input = "ABCD"
@@ -188,4 +187,5 @@ class TestSum():
 
     sku_input = "RRRRQQ"
     assert checkout_solution.checkout(sku_input) == (4 * 50 + 30)
+
 
