@@ -40,13 +40,14 @@ def checkout(skus: List[str]) -> int:
   if not all(sku in PRICE_LIST for sku in unique_skus):
     print("Invalid input")
 
-  count_dict: Dict[str, int] = {sku: skus.count(unique_sku) for sku in unique_skus}
+  count_dict: Dict[str, int] = {sku: skus.count(sku) for sku in unique_skus}
 
   total_cost = 0
   for unique_sku in unique_skus:
     if unique_sku in DEALS:
 
       deal_data = DEALS[unique_sku]
+      print(len(deal_data))
 
       deal_count = floor(count_dict[unique_sku] / deal_data[DEAL_COUNT_KEY])
       remainder_after_deal = count_dict[unique_sku] % deal_data[DEAL_COUNT_KEY]
@@ -57,6 +58,7 @@ def checkout(skus: List[str]) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
 
 
 
