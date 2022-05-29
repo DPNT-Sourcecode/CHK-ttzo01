@@ -191,3 +191,10 @@ class TestSum():
   def test_combo_deals(self):
     sku_input = "ZZZY"
     assert checkout_solution.checkout(sku_input) == (45 + 20)
+
+    sku_input = "ZZZTTTSSS"
+    assert checkout_solution.checkout(sku_input) == (45 * 3)
+
+    sku_input = "ZZZZSSSS"
+    assert checkout_solution.checkout(sku_input) == (2 * 45 + 2 * 20)
+
