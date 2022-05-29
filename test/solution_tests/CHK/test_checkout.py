@@ -81,4 +81,3 @@ class TestSum():
   def test_checkout_multi_item_deal_min_of_two_items(self):
     sku_input = "EEEEBB"
     assert checkout_solution.checkout(sku_input) == (40 * 4)
-
