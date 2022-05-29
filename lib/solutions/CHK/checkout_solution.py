@@ -39,7 +39,7 @@ def compute(skus: List[str]) -> int:
 
   for sku in skus:
     if sku not in count_dict:
-      count_dict[sku] = 0
+      count_dict[sku] = 1
     else:
       count_dict[sku] += 1
     
@@ -58,7 +58,10 @@ def compute(skus: List[str]) -> int:
       total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
     else:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
+      print(count_dict[unique_sku])
 
+  print(total_cost)
+  print(count_dict)
   return total_cost
 
 def checkout(skus: List[str]) -> int:
