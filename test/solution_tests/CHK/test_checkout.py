@@ -144,7 +144,7 @@ class TestSum():
     assert checkout_solution.checkout(sku_input) == (45 + 80)
 
     sku_input = "KKK"
-    assert checkout_solution.checkout(sku_input) == (150 + 80)
+    assert checkout_solution.checkout(sku_input) == (120 + 70)
 
     sku_input = "PPPPPPP"
     assert checkout_solution.checkout(sku_input) == (200 + 50 * 2)
@@ -187,5 +187,6 @@ class TestSum():
 
     sku_input = "RRRRQQ"
     assert checkout_solution.checkout(sku_input) == (4 * 50 + 30)
+
 
 

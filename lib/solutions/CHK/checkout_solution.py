@@ -1,4 +1,4 @@
-from math import floor
+from typing import Dict
 
 from solutions.CHK.single_item_deals import calculate_single_item_deal_price_reduction
 from solutions.CHK.price_list import PRICE_LIST
@@ -32,6 +32,7 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
 

@@ -7,29 +7,17 @@ from solutions.CHK.data_keys import (
   MULTI_ITEM_DEAL_KEY
 )
 
-# | E    | 40    | 2E get one B free               |
-# | N    | 40    | 3N get one M free               |
-# | R    | 50    | 3R get one Q free               |
+# | S    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+# | T    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+# | X    | 17    | buy any 3 of (S,T,X,Y,Z) for 45 |
+# | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+# | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 
 MULTI_ITEM_DEALS = {
   "E": {
       1: {
       DEAL_COUNT_KEY: 2,
       MULTI_ITEM_DEAL_KEY: "B",
-      PRICE_REDUCTION_KEY: 30
-    }
-  },
-  "N": {
-      1: {
-      DEAL_COUNT_KEY: 3,
-      MULTI_ITEM_DEAL_KEY: "M",
-      PRICE_REDUCTION_KEY: 15
-    }
-  },
-  "R": {
-      1: {
-      DEAL_COUNT_KEY: 3,
-      MULTI_ITEM_DEAL_KEY: "Q",
       PRICE_REDUCTION_KEY: 30
     }
   },
@@ -60,6 +48,3 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
 
   return total_price_reduction
-
-
-
