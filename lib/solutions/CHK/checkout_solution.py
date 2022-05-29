@@ -103,7 +103,6 @@ SINGLE_ITEM_DEALS = {
       PRICE_REDUCTION_KEY: 20
     }
   },
-# | U    | 40    | 3U get one U free      |
   "K": {
     1: {
       DEAL_COUNT_KEY: 2,
@@ -122,6 +121,12 @@ SINGLE_ITEM_DEALS = {
       PRICE_REDUCTION_KEY: 10
     },
   },
+  "U": {
+    1: {
+      DEAL_COUNT_KEY: 4,
+      PRICE_REDUCTION_KEY: 40
+    },
+  },
   "V": {
     1: {
       DEAL_COUNT_KEY: 2,
@@ -134,9 +139,10 @@ SINGLE_ITEM_DEALS = {
   }
 }
 
+# | E    | 40    | 2E get one B free      |
+# | F    | 10    | 2F get one F free      |
 # | N    | 40    | 3N get one M free      |
 # | R    | 50    | 3R get one Q free      |
-# | U    | 40    | 3U get one U free      |
 
 MULTI_ITEM_DEALS = {
   "E": {
@@ -152,7 +158,8 @@ MULTI_ITEM_DEALS = {
       MULTI_ITEM_DEAL_KEY: "F",
       PRICE_REDUCTION_KEY: 10
     }
-  }
+  },
+
 }
 
 INVALID_INPUT_RESPONSE = -1
@@ -223,10 +230,12 @@ def checkout(skus: str) -> int:
   # calculate reduction in price from total
 
   # Calculate the multi item deals first and reduce the count_dict on the deal item if they've been applied
+  # This doesn't really work if the multi_item deal price is less than the single item deal
   total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
 
