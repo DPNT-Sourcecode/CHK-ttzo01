@@ -33,7 +33,7 @@ DEALS = {
 }
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
-def compute(skus: List[str]) -> int:
+def checkout(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
 
   for sku in skus:
@@ -62,7 +62,4 @@ def compute(skus: List[str]) -> int:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
-
-def checkout(skus: List[str]) -> int:
-  return compute(skus)
 
