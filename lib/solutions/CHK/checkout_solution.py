@@ -37,7 +37,6 @@ PRICE_REDUCTION_KEY = "price_reduction"
 MULTI_ITEM_DEAL_KEY = "deal_item"
 
 
-
 PRICE_LIST = {
   "A": 50,
   "B": 30,
@@ -45,6 +44,26 @@ PRICE_LIST = {
   "D": 15,
   "E": 40,
   "F": 10,
+  "G": 20,
+  "H": 10,
+  "I": 35,
+  "J": 60,
+  "K": 80,
+  "L": 90,
+  "M": 15,
+  "N": 40,
+  "O": 10,
+  "P": 50,
+  "Q": 30,
+  "R": 50,
+  "S": 30,
+  "T": 20,
+  "U": 40,
+  "V": 50,
+  "W": 20,
+  "X": 90,
+  "Y": 10,
+  "Z": 50,
 }
 
 
@@ -64,6 +83,16 @@ SINGLE_ITEM_DEALS = {
     1: {
       DEAL_COUNT_KEY: 2,
       PRICE_REDUCTION_KEY: 15
+    }
+  },
+  "H": {
+    1: {
+      DEAL_COUNT_KEY: 5,
+      PRICE_REDUCTION_KEY: 5
+    },
+    2: {
+      DEAL_COUNT_KEY: 2,
+      PRICE_REDUCTION_KEY: 20
     }
   }
 }
@@ -157,3 +186,4 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
