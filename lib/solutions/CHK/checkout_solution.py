@@ -13,7 +13,7 @@ from typing import Dict, List
 from math import floor
 
 DEAL_COUNT_KEY = "count"
-DEAL_PRICE_KEY = "price"
+PRICE_REDUCTION_KEY = "price_reduction"
 
 PRICE_LIST = {
   "A": 50,
@@ -25,21 +25,22 @@ PRICE_LIST = {
 SINGLE_ITEM_DEALS = {
   "A": [{
     DEAL_COUNT_KEY: 3,
-    DEAL_PRICE_KEY: 130
+    PRICE_REDUCTION_KEY: 20
   }, {
     DEAL_COUNT_KEY: 5,
-    DEAL_PRICE_KEY: 200
+    PRICE_REDUCTION_KEY: 50
   }],
   "B": [{
     DEAL_COUNT_KEY: 2,
-    DEAL_PRICE_KEY: 45
+    PRICE_REDUCTION_KEY: 45
   }]
 }
 
 MULTI_ITEM_DEALS = {
   "E": {
     DEAL_COUNT_KEY: 2,
-    
+    "deal_item": "B",
+    PRICE_REDUCTION_KEY: 30
   }
 }
 
@@ -61,6 +62,12 @@ def checkout(skus: str) -> int:
   count_dict: Dict[str, int] = {sku: skus.count(sku) for sku in unique_skus}
 
   total_cost = 0
+
+  for unique_sku in unique_skus:
+    total_cost += PRICE_LIST[unique_sku]
+
+  # calculate reduction in price from total
+
   for unique_sku in unique_skus:
     if unique_sku in SINGLE_ITEM_DEALS:
 
@@ -68,10 +75,11 @@ def checkout(skus: str) -> int:
 
       deal_count = floor(count_dict[unique_sku] / single_item_deal_data[DEAL_COUNT_KEY])
       remainder_after_deal = count_dict[unique_sku] % single_item_deal_data[DEAL_COUNT_KEY]
-      total_cost += deal_count * single_item_deal_data[DEAL_PRICE_KEY]
 
+      total_cost += deal_count * single_item_deal_data[PRICE_REDUCTION_KEY]
       total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
     else:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
