@@ -13,10 +13,10 @@ from solutions.CHK.data_keys import (
 # | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
 # | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 
-MULTI_ITEM_DEALS = {
+MULTI_ITEM_COMBO_DEALS = {
   "E": {
       1: {
-      DEAL_COUNT_KEY: 2,
+      DEAL_COUNT_KEY: 3,
       MULTI_ITEM_DEAL_KEY: "B",
       PRICE_REDUCTION_KEY: 30
     }
@@ -48,3 +48,4 @@ def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique
 
 
   return total_price_reduction
+
