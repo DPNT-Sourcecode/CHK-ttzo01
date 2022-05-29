@@ -7,5 +7,3 @@ def hello(friend_name: str) -> str:
     raise TypeError(f"Invalid input {friend_name}")
 
   return f"Hello, {friend_name}!"  
-
-

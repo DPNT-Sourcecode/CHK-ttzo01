@@ -8,7 +8,7 @@
 # | D    | 15    |                |
 # +------+-------+----------------+
 
-from typing import Dict
+from typing import Dict, List
 
 PRICE_LIST = {
   "A": 50,  
@@ -30,7 +30,7 @@ DEALS = {
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def checkout(skus: str) -> int:
+def checkout(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
   for sku in skus:
 
@@ -39,4 +39,4 @@ def checkout(skus: str) -> int:
     else:
       count[sku] += 1
     
-  
+  unique_skus = set(skus)
