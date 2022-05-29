@@ -75,12 +75,39 @@ class TestSum():
     sku_input = "K"
     assert checkout_solution.checkout(sku_input) == 80
 
-# | K    | 80    | 2K for 150             |
-# | L    | 90    |                        |
-# | M    | 15    |                        |
-# | N    | 40    | 3N get one M free      |
-# | O    | 10    |                        |
-# | P    | 50    | 5P for 200             |
+    sku_input = "L"
+    assert checkout_solution.checkout(sku_input) == 90
+
+    sku_input = "M"
+    assert checkout_solution.checkout(sku_input) == 15
+
+    sku_input = "N"
+    assert checkout_solution.checkout(sku_input) == 40
+
+    sku_input = "O"
+    assert checkout_solution.checkout(sku_input) == 10
+
+    sku_input = "P"
+    assert checkout_solution.checkout(sku_input) == 50
+
+    sku_input = "Q"
+    assert checkout_solution.checkout(sku_input) == 30
+
+    sku_input = "R"
+    assert checkout_solution.checkout(sku_input) == 50
+
+assert checkout_solution.checkout(sku_input) == 30
+assert checkout_solution.checkout(sku_input) == 50
+assert checkout_solution.checkout(sku_input) == 30
+assert checkout_solution.checkout(sku_input) == 20
+assert checkout_solution.checkout(sku_input) == 40
+assert checkout_solution.checkout(sku_input) == 50
+assert checkout_solution.checkout(sku_input) == 20
+assert checkout_solution.checkout(sku_input) == 90
+assert checkout_solution.checkout(sku_input) == 10
+assert checkout_solution.checkout(sku_input) == 50
+
+
 # | Q    | 30    | 3Q for 80              |
 # | R    | 50    | 3R get one Q free      |
 # | S    | 30    |                        |
