@@ -118,11 +118,7 @@ def checkout(skus: str) -> int:
   # calculate reduction in price from total
 
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
-
-  print(total_cost)
-  print("Total cost after reduction", total_cost)
-
-  # total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
+  total_cost -= calculate_multi_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
 
