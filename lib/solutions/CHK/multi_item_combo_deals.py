@@ -20,7 +20,7 @@ from solutions.CHK.data_keys import (
 
 MULTI_ITEM_COMBO_DEALS = {
   ["S","T","X","Y","Z"]: {
-      1: {
+    1: {
       DEAL_COUNT_KEY: 3,
       TOTAL_PRICE_KEY: 45
     }
@@ -29,26 +29,15 @@ MULTI_ITEM_COMBO_DEALS = {
 
 def calculate_multi_item_deal_price_reduction(count_dict: Dict[str, int], unique_skus: list) -> int:
   total_price_reduction = 0
+
+  total_count_for_combo = 0
   for unique_sku in unique_skus:
-    if unique_sku in MULTI_ITEM_DEALS:
-      all_deal_data_for_item = MULTI_ITEM_DEALS[unique_sku]
+    if unique_sku in MULTI_ITEM_COMBO_DEALS:
+      all_deal_data_for_item = MULTI_ITEM_COMBO_DEALS[unique_sku]
 
       # Should really check this exists before accessing from the dict. Also should really exist at this stage though
       total_for_single_item = count_dict[unique_sku]
 
-      for single_deal_for_item in all_deal_data_for_item.values():
-        deal_item = single_deal_for_item[MULTI_ITEM_DEAL_KEY]
-        if deal_item in count_dict:
-          deal_item_count = count_dict[deal_item]
-          number_of_times_deal_applied = min(
-            floor(total_for_single_item / single_deal_for_item[DEAL_COUNT_KEY]),
-            floor(deal_item_count)
-          )
-
-          if (number_of_times_deal_applied > 0):
-            total_price_reduction += number_of_times_deal_applied * single_deal_for_item[PRICE_REDUCTION_KEY]
-            total_for_single_item = total_for_single_item % number_of_times_deal_applied
-            count_dict[deal_item] -= number_of_times_deal_applied
-
+      total_count_for_combo += total_for_single_item
 
   return total_price_reduction
