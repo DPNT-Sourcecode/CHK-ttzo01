@@ -10,6 +10,9 @@
 
 from typing import Dict, List
 
+DEAL_COUNT_KEY = "count"
+DEAL_PRICE_KEY = "price"
+
 PRICE_LIST = {
   "A": 50,  
   "B": 30,  
@@ -19,12 +22,12 @@ PRICE_LIST = {
 
 DEALS = {
   "A": {
-    "count": 3,
-    "price": 130
+    DEAL_COUNT_KEY: 3,
+    DEAL_PRICE_KEY: 130
   },
   "B": {
-    "count": 2,
-    "price": 45
+    DEAL_COUNT_KEY: 2,
+    DEAL_PRICE_KEY: 45
   }
 }
 
@@ -40,3 +43,9 @@ def checkout(skus: List[str]) -> int:
       count[sku] += 1
     
   unique_skus = set(skus)
+
+  total_cost = 0
+  for unique_sku in unique_skus:
+    if unique_sku in DEALS:
+      if count_dict[unique_sku] >= DEALS[unique_sku]:
+        total_cost = count_dict[unique_sku] % DEALS[unique_sku]
