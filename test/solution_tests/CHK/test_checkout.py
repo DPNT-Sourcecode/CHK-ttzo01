@@ -32,6 +32,9 @@ class TestSum():
     sku_input = "D"
     assert checkout_solution.checkout(sku_input) == 15
 
+    sku_input = "E"
+    assert checkout_solution.checkout(sku_input) == 40
+
   def test_checkout_no_deals(self):
     sku_input = "ABCD"
     assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 15)
