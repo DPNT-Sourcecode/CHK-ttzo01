@@ -35,22 +35,20 @@ def calculate_multi_item_combo_deal_price_reduction(count_dict: Dict[str, int], 
 
   for deal in DEAL_COMBO_LIST_KEY:
 
-    price_list_for_deal = {}
+    prices_for_deal = {}
     total_count_for_combo = 0
     cost_without_deal = 0
 
     for sku_in_combo_deal in deal[DEAL_COMBO_LIST_KEY]:
-      price_list_for_deal[sku_in_combo_deal] = PRICE_LIST[sku_in_combo_deal]
+
+      prices_for_deal[sku_in_combo_deal] = PRICE_LIST[sku_in_combo_deal]
+
       if sku_in_combo_deal in count_dict:
         total_count_for_combo += count_dict[sku_in_combo_deal]
         cost_without_deal += count_dict[sku_in_combo_deal] * PRICE_LIST[sku_in_combo_deal]
   
     number_of_times_deal_applied = total_count_for_combo/deal[DEAL_COUNT_KEY]:
 
-    sort_by_value = dict(sorted(price_list_for_deal.items(), key=lambda item: item[1]))
-          
-
-
+    sorted_ascending_prices_for_deal = dict(sorted(prices_for_deal.items(), key=lambda item: item[1]))
 
   return total_price_reduction
-
