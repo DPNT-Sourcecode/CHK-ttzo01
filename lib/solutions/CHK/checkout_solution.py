@@ -66,6 +66,15 @@ PRICE_LIST = {
   "Z": 50,
 }
 
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | H    | 10    | 5H for 45, 10H for 80  |
+# | K    | 80    | 2K for 150             |
+# | P    | 50    | 5P for 200             |
+# | Q    | 30    | 3Q for 80              |
+# | U    | 40    | 3U get one U free      |
+# | V    | 50    | 2V for 90, 3V for 130  |
+
 # Sorted dict of deals per item, Descending based on deal count. Doesn't need to be a dict could of just been a list
 SINGLE_ITEM_DEALS = {
   "A": {
@@ -90,10 +99,14 @@ SINGLE_ITEM_DEALS = {
       PRICE_REDUCTION_KEY: 5
     },
     2: {
-      DEAL_COUNT_KEY: 2,
+      DEAL_COUNT_KEY: 10,
       PRICE_REDUCTION_KEY: 20
     }
   },
+# | P    | 50    | 5P for 200             |
+# | Q    | 30    | 3Q for 80              |
+# | U    | 40    | 3U get one U free      |
+# | V    | 50    | 2V for 90, 3V for 130  |
   "K": {
     1: {
       DEAL_COUNT_KEY: 10,
@@ -111,14 +124,23 @@ SINGLE_ITEM_DEALS = {
       DEAL_COUNT_KEY: 3,
       PRICE_REDUCTION_KEY: 10
     },
+  },
+  "V": {
+    1: {
+      DEAL_COUNT_KEY: 2,
+      PRICE_REDUCTION_KEY: 10
+    },
+    2: {
+      DEAL_COUNT_KEY: 3,
+      PRICE_REDUCTION_KEY: 20
+    },
   }
 }
 
 # | N    | 40    | 3N get one M free      |
-# | Q    | 30    | 3Q for 80              |
 # | R    | 50    | 3R get one Q free      |
 # | U    | 40    | 3U get one U free      |
-# | V    | 50    | 2V for 90, 3V for 130  |
+
 MULTI_ITEM_DEALS = {
   "E": {
       1: {
@@ -208,5 +230,6 @@ def checkout(skus: str) -> int:
   total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   return total_cost
+
 
 
