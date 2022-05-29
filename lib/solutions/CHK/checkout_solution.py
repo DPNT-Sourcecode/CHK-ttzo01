@@ -36,6 +36,13 @@ SINGLE_ITEM_DEALS = {
   }]
 }
 
+MULTI_ITEM_DEALS = {
+  "E": {
+    DEAL_COUNT_KEY: 2,
+    
+  }
+}
+
 INVALID_INPUT_RESPONSE = -1
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
@@ -55,19 +62,19 @@ def checkout(skus: str) -> int:
 
   total_cost = 0
   for unique_sku in unique_skus:
-    if unique_sku in DEALS:
+    if unique_sku in SINGLE_ITEM_DEALS:
 
-      deal_data = DEALS[unique_sku]
-      print(len(deal_data))
+      single_item_deal_data = SINGLE_ITEM_DEALS[unique_sku]
 
-      deal_count = floor(count_dict[unique_sku] / deal_data[DEAL_COUNT_KEY])
-      remainder_after_deal = count_dict[unique_sku] % deal_data[DEAL_COUNT_KEY]
-      total_cost += deal_count * deal_data[DEAL_PRICE_KEY]
+      deal_count = floor(count_dict[unique_sku] / single_item_deal_data[DEAL_COUNT_KEY])
+      remainder_after_deal = count_dict[unique_sku] % single_item_deal_data[DEAL_COUNT_KEY]
+      total_cost += deal_count * single_item_deal_data[DEAL_PRICE_KEY]
 
       total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
     else:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
 
   return total_cost
+
 
 

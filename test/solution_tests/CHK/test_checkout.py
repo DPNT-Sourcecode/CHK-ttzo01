@@ -59,7 +59,8 @@ class TestSum():
 
   def test_checkout_free_item_conditons(self):
     sku_input = "EEBEE"
-    assert checkout_solution.checkout(sku_input) == (4 * )
+    assert checkout_solution.checkout(sku_input) == (4 * 40)
+
 
 
 
