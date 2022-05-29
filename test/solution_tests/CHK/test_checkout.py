@@ -28,5 +28,5 @@ class TestSum():
 
   def test_checkout_deals_with_B(self):
     input = ["A", "A", "B", "B"]
-    assert checkout_solution.compute(input) == (50 + 50 + 40)
+    assert checkout_solution.compute(input) == (50 + 50 + 45)
     

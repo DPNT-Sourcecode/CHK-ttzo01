@@ -32,8 +32,7 @@ DEALS = {
   }
 }
 
-# noinspection PyUnusedLocal
-# skus = unicode string
+# I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def compute(skus: List[str]) -> int:
   count_dict: Dict[str, int] = {}
 
@@ -58,10 +57,7 @@ def compute(skus: List[str]) -> int:
       total_cost += remainder_after_deal * PRICE_LIST[unique_sku]
     else:
       total_cost += count_dict[unique_sku] * PRICE_LIST[unique_sku]
-      print(count_dict[unique_sku])
 
-  print(total_cost)
-  print(count_dict)
   return total_cost
 
 def checkout(skus: List[str]) -> int:
