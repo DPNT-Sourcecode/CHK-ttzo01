@@ -34,15 +34,13 @@ DEALS = {
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
 def checkout(skus: List[str]) -> int:
-  count_dict: Dict[str, int] = {}
 
   unique_skus = set(skus)
 
   if not all(sku in PRICE_LIST for sku in unique_skus):
     print("Invalid input")
 
-  for unique_sku in unique_skus:
-    count_dict[unique_sku] = skus.count(unique_sku)
+  count_dict: Dict[str, int] = {sku: skus.count(unique_sku) for sku in unique_skus}
 
   total_cost = 0
   for unique_sku in unique_skus:
