@@ -14,40 +14,41 @@ from pytest import raises
 class TestSum():
 
   def test_checkout_single_inputs(self):
-    sku_input = ["A"]
+    sku_input = "A"
     assert checkout_solution.checkout(sku_input) == 50
   
-    sku_input = ["B"]
+    sku_input = "B"
     assert checkout_solution.checkout(sku_input) == 30
 
-    sku_input = ["C"]
+    sku_input = "C"
     assert checkout_solution.checkout(sku_input) == 20
 
-    sku_input = ["D"]
+    sku_input = "D"
     assert checkout_solution.checkout(sku_input) == 15
 
   def test_checkout_no_deals(self):
-    sku_input = ["A", "B", "C", "D"]
+    sku_input = "ABCD"
     assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 15)
     
-    sku_input = ["A", "B", "C", "C"]    
+    sku_input = "ABCC"    
     assert checkout_solution.checkout(sku_input) == (50 + 30 + 20 + 20)
 
-    sku_input = ["A", "A", "C", "C"]    
+    sku_input = "AACC"    
     assert checkout_solution.checkout(sku_input) == (50 + 50 + 20 + 20)
 
   def test_checkout_deals_with_A(self):
-    sku_input = ["A", "A", "A", "B"]
+    sku_input = "AAAB"
     assert checkout_solution.checkout(sku_input) == (130 + 30)
 
   def test_checkout_deals_with_B(self):
-    sku_input = ["A", "A", "B", "B"]
+    sku_input = "AABB"
     assert checkout_solution.checkout(sku_input) == (50 + 50 + 45)
     
   def test_checkout_invalid_input(self):
-    sku_input = ["a"]
+    sku_input = "a"
     assert checkout_solution.checkout(sku_input) == -1
 
-    sku_input = ["01"]
+    sku_input = "01"
     assert checkout_solution.checkout(sku_input) == -1
+
 
