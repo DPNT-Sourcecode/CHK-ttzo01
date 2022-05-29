@@ -20,6 +20,7 @@ PRICE_LIST = {
   "B": 30,
   "C": 20,
   "D": 15,
+  "E": 40,
 }
 
 SINGLE_ITEM_DEALS = {
@@ -50,6 +51,7 @@ def calculate_single_item_deal_price_reduction(count_dict: Dict[str, int], uniqu
   total_price_reduction = 0
   for unique_sku in unique_skus:
     if unique_sku in SINGLE_ITEM_DEALS:
+      deal_data = SINGLE_ITEM_DEALS[unique_sku]
 
 
 # I forgot to restart this one after pausing it, and then coming back so its taken about 3 minutes longer
@@ -74,8 +76,9 @@ def checkout(skus: str) -> int:
 
   # calculate reduction in price from total
 
+  total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
-      total_cost -= 
+  # total_cost -= calculate_single_item_deal_price_reduction(count_dict, unique_skus)
 
   # for unique_sku in unique_skus:
   #   if unique_sku in SINGLE_ITEM_DEALS:
@@ -93,4 +96,5 @@ def checkout(skus: str) -> int:
   # return total_cost
 
   return total_cost
+
 
